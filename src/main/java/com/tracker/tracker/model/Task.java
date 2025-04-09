@@ -24,4 +24,6 @@ public class Task {
 
     @DocumentReference
     private List<String> usersIDs;
+
+    private List<String> ChatRoomIds;
 }
