@@ -1,6 +1,7 @@
 package com.tracker.tracker.model;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
@@ -21,12 +22,14 @@ public class Task {
 
     private String content;
 
+    @CreatedDate
     private LocalDateTime creationDate;
 
     private LocalDateTime deadline;
 
     @DocumentReference
-    private List<String> usersIDs;
+    private List<User> users;
 
-    private List<String> ChatRoomIds;
+    @DocumentReference
+    private List<ChatRoom> chatRooms;
 }

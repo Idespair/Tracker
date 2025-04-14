@@ -26,5 +26,5 @@ public class User {
     private String password;
 
     @DocumentReference
-    private List<String> tasksIDs;
+    private List<Task> assignedTasks;
 }

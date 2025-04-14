@@ -22,11 +22,11 @@ public class ChatRoom {
     private int numberOfUsers;
 
     @DocumentReference
-    private List<String> userIds;
+    private List<User> users;
 
     @DocumentReference
-    private List<String> tasksIds;
+    private List<Task> tasks;
 
     @DocumentReference
-    private List<String> messagesIds;
+    private List<Message> messages;
 }
