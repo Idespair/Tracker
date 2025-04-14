@@ -7,18 +7,23 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = "user")
 public class User {
 
     @Id
     private String id;
 
+    private String name;
+
     private String email;
 
-    private String username;
-
     private String role;
+
+    private String password;
 
     @DocumentReference
     private List<String> tasksIDs;
