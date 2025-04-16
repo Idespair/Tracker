@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Document(collection = "message")
 public class Message {
     @Id
-    private String id;;
+    private String id;
 
     private String content;
 
