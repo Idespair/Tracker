@@ -1,13 +1,17 @@
 package com.tracker.tracker.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class UserDTO {
 
-    public String id;
+    private String id;
 
-    public String name;
+    private String name;
 
-    public String role;
+    private String role;
+
+    private String email;
 }

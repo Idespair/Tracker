@@ -7,12 +7,12 @@ import java.time.LocalDateTime;
 @Data
 public class TaskDTO {
 
-    public String id;
+    private String id;
 
-    public String title;
+    private String title;
 
-    public String content;
+    private String content;
 
-    public LocalDateTime deadline;
+    private LocalDateTime deadline;
 
 }
