@@ -19,4 +19,6 @@ public class TaskDTO {
 
     private LocalDateTime deadline;
 
+    private Boolean IsOpen;
+
 }

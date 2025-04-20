@@ -22,6 +22,8 @@ public class Task {
 
     private String content;
 
+    private Boolean isOpen;
+
     @CreatedDate
     private LocalDateTime creationDate;
 
