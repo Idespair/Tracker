@@ -1,0 +1,8 @@
+package com.tracker.tracker.exceptions;
+
+public class InvalidUserException extends RuntimeException {
+
+    public InvalidUserException(String message) {
+        super(message);
+    }
+}
