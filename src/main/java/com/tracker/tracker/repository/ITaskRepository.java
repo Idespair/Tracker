@@ -18,4 +18,6 @@ public interface ITaskRepository extends ReactiveMongoRepository<Task, String> {
     Flux<Task> findByCreationDateBetween(LocalDateTime start, LocalDateTime end);
 
     Flux<Task> findTaskByDeadline(LocalDateTime deadline);
+
+    Flux<Task> findTaskByOpenedTasks(Boolean isOpen);
 }
