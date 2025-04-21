@@ -1,6 +1,7 @@
 package com.tracker.tracker.service;
 
 import com.tracker.tracker.dtos.UserDTO;
+import com.tracker.tracker.exceptions.InvalidUserException;
 import com.tracker.tracker.model.User;
 import com.tracker.tracker.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,25 +17,33 @@ public class UserService {
 
     public Mono<UserDTO> getUserByEmail(String email){
         return iUserRepository.findByEmail(email)
-                .switchIfEmpty(Mono.error(new RuntimeException("No user found with email: " + email)))
+                .switchIfEmpty(Mono.error(new InvalidUserException("No user found with email: " + email)))
                 .map(this::toUserDTO);
     }
 
     public Flux<UserDTO> getAllByCertainName(String name){
         return iUserRepository.findAllByCertainName(name)
-                .switchIfEmpty(Flux.error(new RuntimeException("No user found with name: " + name)))
+                .switchIfEmpty(Flux.error(new InvalidUserException("No user found with name: " + name)))
                 .map(this::toUserDTO);
     }
 
     public Flux<UserDTO> getAllByAssignedTasks(String taskId){
         return iUserRepository.findAllByAssignedTask(taskId)
-                .switchIfEmpty(Flux.error(new RuntimeException("No tasks found with the ID: " + taskId)))
+                .switchIfEmpty(Flux.error(new InvalidUserException("No tasks found with the ID: " + taskId)))
                 .map(this::toUserDTO);
     }
 
     public Flux<UserDTO> findAllByRole(String role){
         return iUserRepository.findAllByCertainRole(role)
-                .switchIfEmpty(Flux.error(new RuntimeException("No user found with role: " + role)))
+                .switchIfEmpty(Flux.error(new InvalidUserException("No user found with role: " + role)))
+                .map(this::toUserDTO);
+    }
+
+    public Mono<UserDTO> createNewUser(User user){
+
+
+
+        return iUserRepository.save(user)
                 .map(this::toUserDTO);
     }
 
