@@ -41,7 +41,9 @@ public class UserService {
 
     public Mono<UserDTO> createNewUser(User user){
 
-
+        if (user.getId() != null){
+            return Mono.error(new InvalidUserException("User must not have any ID before creation"));
+        }
 
         return iUserRepository.save(user)
                 .map(this::toUserDTO);
