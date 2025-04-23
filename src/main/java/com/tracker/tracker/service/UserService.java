@@ -45,6 +45,18 @@ public class UserService {
             return Mono.error(new InvalidUserException("User must not have any ID before creation"));
         }
 
+        if (user.getName() == null || user.getName().isBlank()){
+            return Mono.error(new InvalidUserException("User must have a name"));
+        }
+
+        if (user.getEmail() == null || user.getEmail().isBlank()){
+            return Mono.error(new InvalidUserException("User must have an email"));
+        }
+
+        if (user.getPassword() == null || user.getPassword().isBlank()){
+            return Mono.error(new InvalidUserException("User must have a valid password"));
+        }
+
         return iUserRepository.save(user)
                 .map(this::toUserDTO);
     }
