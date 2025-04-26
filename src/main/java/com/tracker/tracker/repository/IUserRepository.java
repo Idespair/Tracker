@@ -13,7 +13,11 @@ public interface IUserRepository extends ReactiveMongoRepository<User, String> {
 
     Mono<User> findByEmail(String email);
 
+    Mono<Void> deleteByName(String name);
+
     Flux<User> findAllByAssignedTask(String taskId);
 
     Flux<User> findAllByCertainRole(String role);
+
+    Mono<User> findByName(String name);
 }
