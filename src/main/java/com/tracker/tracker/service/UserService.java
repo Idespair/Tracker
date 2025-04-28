@@ -39,7 +39,7 @@ public class UserService {
                 .map(this::toUserDTO);
     }
 
-    public Mono<User> deleteUserByName(String name) {
+    public Mono<User> deleteUserByName(String name){
         return  iUserRepository.findByName(name)
                 .switchIfEmpty(Mono.error(new InvalidUserException("No user found with name: " + name)))
                 .flatMap(user -> iUserRepository.delete(user).thenReturn(user));
